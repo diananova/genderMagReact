@@ -1,0 +1,19 @@
+{
+  "name": "GenderMag Recorder's Assistant",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "GenderMag Recorder's Assistant",
+  "icons": {
+      "512": "logo512.png"
+  },
+  "content_scripts": [{
+    "js": [ "content.js"],
+    "matches": [ "<all_urls>"]
+   }],
+   "background": {
+    "scripts": ["background.js"]
+   },
+   "permissions": ["contextMenus", "tabs"],
+   "web_accessible_resources" : ["*.html"],
+  "content_security_policy": "script-src 'self' 'sha256-p5hOtlld76OubQRjuoOzFkH1phfMCtQyYciqJYR0hgk='"
+}
