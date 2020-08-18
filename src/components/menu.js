@@ -11,7 +11,10 @@ class Menu extends React.Component {
             this.props.changeState('tree');
         }
         if (evt.target.name=='action') {
-            this.props.changeState('actionInput');
+            if (this.props.array.length==0) 
+                alert("You first need to add a subgoal!")
+            else
+                this.props.changeState('actionInput');
         }
         if (evt.target.name=='subgoal')
             this.props.changeState('subgoalInput');

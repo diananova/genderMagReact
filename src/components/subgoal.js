@@ -29,17 +29,21 @@ class Subgoal extends React.Component {
 
       handleSubmit(evt) {        
         evt.preventDefault();
-        const arr = ['attitudeTowardsRisk', 'computerSelfEfficacy', 'informationProcessingStyle', 'learningByProcess', 'motivation'];
-        const result = arr.filter(elem => this.state[elem]=='on');
-        const mySubgoal = {
-            subgoalName: this.state.subgoalName,
-            yesno: this.state.yesno,
-            why: this.state.why,
-            facets: result,
-            actions: []
-          }
-        this.props.addSubgoal(mySubgoal);
-        this.props.changeState('actionInput');
+        if (evt.target.name=='menu')
+            this.props.changeState('menu');
+        else {
+            const arr = ['attitudeTowardsRisk', 'computerSelfEfficacy', 'informationProcessingStyle', 'learningByProcess', 'motivation'];
+            const result = arr.filter(elem => this.state[elem]=='on');
+            const mySubgoal = {
+                subgoalName: this.state.subgoalName,
+                yesno: this.state.yesno,
+                why: this.state.why,
+                facets: result,
+                actions: []
+            }
+            this.props.addSubgoal(mySubgoal);
+            this.props.changeState('actionInput');
+        }
 
     }
     render() {
@@ -149,6 +153,9 @@ class Subgoal extends React.Component {
                 </div>
                 <input type="submit" value="Submit" />
                 </form>
+                <br/>
+                <button name='menu' onClick={this.handleSubmit}>Go back to Menu</button>
+
                
 
             </div>)

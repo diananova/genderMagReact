@@ -28,20 +28,25 @@ class Action extends React.Component {
 
       handleSubmit(evt) {
         evt.preventDefault();
-        const arr = ['attitudeTowardsRisk', 'computerSelfEfficacy', 'informationProcessingStyle', 'learningByProcess', 'motivation'];
-        const result = arr.filter(elem => this.state[elem]=='on');
+        if (evt.target.name=='menu')
+            this.props.changeState('menu');
+        else {
+            const arr = ['attitudeTowardsRisk', 'computerSelfEfficacy', 'informationProcessingStyle', 'learningByProcess', 'motivation'];
+            const result = arr.filter(elem => this.state[elem]=='on');
 
-        const myAction = {
-            actionName: this.state.actionName,
-            yesno: this.state.yesno,
-            why: this.state.why,
-            facetsUsed: result
-        }
-        this.props.addAction(this.state.subgoalName, myAction);
-        this.props.changeState('screenshotInput');
+            const myAction = {
+                actionName: this.state.actionName,
+                yesno: this.state.yesno,
+                why: this.state.why,
+                facetsUsed: result
+            }
+            this.props.addAction(this.state.subgoalName, myAction);
+            this.props.changeState('screenshotInput');
+        }   
       }
 
     render() {
+        let persona = localStorage.getItem('persona');
         const list = this.props.array.map((item) => 
             <option value={item.subgoalName}>{item.subgoalName}</option>
         );
@@ -67,7 +72,7 @@ class Action extends React.Component {
                 </label>
                 <br/>
                 <div id="radio">
-                <p>Will Abi have formed this subgoal as a step to a overall goal?
+                <p>Will {persona} have formed this subgoal as a step to a overall goal?
 </p>
                     <label>
                             <input
@@ -156,6 +161,8 @@ class Action extends React.Component {
                 </div>
                 <input type="submit" value="Submit" />
                 </form>
+                <br/>
+                <button name='menu' onClick={this.handleSubmit}>Go back to Menu</button>
                 </div>
         )
     }
