@@ -10,7 +10,8 @@ import Action from './components/action.js'
 import Screenshot from './components/screenshot.js'
 import Menu from './components/menu.js'
 import Array from './components/array.js'
-
+import CsvExport from './components/csv.js'
+import SubgoalTree from './components/tree.js'
 //page: welcome, groupInput, personaInput, 
 class App extends React.Component {
 
@@ -83,14 +84,19 @@ class App extends React.Component {
       page = <Screenshot changeState={this.handleClick}/>
       break
     case 'menu':
-      page = <Menu changeState={this.handleClick}/>
+      page = <Menu array = {this.state.subgoalArray} changeState={this.handleClick}/>
+      break
+    case 'tree':
+      page = <SubgoalTree array = {this.state.subgoalArray} changeState={this.handleClick}/>
+      break
+    case 'csv':
+      page = <CsvExport array = {this.state.subgoalArray} changeState={this.handleClick}/>
       break
     default:
       page = <div>default!</div>
   }
   return (
     <div>
-    {this.props.showArray ? <Array /> : null}
     {page}
     </div>)
   } 

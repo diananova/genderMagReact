@@ -5,7 +5,7 @@ class Action extends React.Component {
         super(props);
         this.state = {
          actionName: "",
-         subgoalName: this.props.array[0].subgoalName,
+         subgoalName: this.props.array[this.props.array.length-1].subgoalName,
          yesno: "",
          why: "",
          motivation: false,
@@ -45,10 +45,6 @@ class Action extends React.Component {
         const list = this.props.array.map((item) => 
             <option value={item.subgoalName}>{item.subgoalName}</option>
         );
-        // 
-        
-        
-        //this.props.array[0].subgoalName;
         return (
             <div>
 
@@ -106,7 +102,7 @@ class Action extends React.Component {
                 <br/>
                 <div id="textbox">
                     <label>
-                        Why, why nor or why maybe?
+                        Why, why not or why maybe?
                         <input
                         name = "why"
                         type="textarea"
