@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Instructions
+1. download the repo as a zip
+2. npm install (gets the dependencies)
+3. npm audit fix (if there are vulnerabilities)
+4. npm run build
+5. manage extensions -> load unpacked -> select build directory
+6. pin the extension, click the icon, click GenderMag
+
+## Demo
+https://vimeo.com/448721573
+
 ## Available Scripts
 
 In the project directory, you can run:
